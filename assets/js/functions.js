@@ -77,3 +77,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 L.marker([45.4000, -71.9000]).addTo(mymap)
     .bindPopup('Sherbrooke, Québec, Canada').openPopup();
+
+// Ajoutez la classe pour rendre la carte en  noir et blanc
+var mapContainer = document.getElementById('map');
+mapContainer.classList.add('black-and-white-map');
