@@ -1,3 +1,4 @@
+// menu fluid
 $( document ).ready(function() {
 	
 function nav(){
@@ -16,27 +17,28 @@ nav();
 
 const menuLinks = document.querySelectorAll('.nav a');
 
-// Ajoutez un gestionnaire d'événements à chaque lien du menu
+
 menuLinks.forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault(); // Empêche le comportement par défaut du lien
+    e.preventDefault(); 
     
-    const targetId = link.getAttribute('href').substring(1); // Récupère l'ID de la section cible
-    const targetSection = document.getElementById(targetId); // Sélectionne la section cible
+    const targetId = link.getAttribute('href').substring(1); 
+    const targetSection = document.getElementById(targetId); 
     
     if (targetSection) {
-      targetSection.scrollIntoView({ behavior: 'smooth' }); // Faites défiler la section cible de manière fluide
+      targetSection.scrollIntoView({ behavior: 'smooth' }); 
     }
   });
 });
 
+// Slider
 const slider = document.querySelector('#full-slide');
 const sliderItems = slider.querySelectorAll('.banner li');
 const prevBtn = slider.querySelector('.prev');
 const nextBtn = slider.querySelector('.next');
 let currentIndex = 0;
 
-// Fonction pour afficher une diapositive spécifique
+
 function showSlide(index) {
   sliderItems.forEach((item, i) => {
     if (i === index) {
@@ -47,7 +49,6 @@ function showSlide(index) {
   });
 }
 
-// Gestionnaire d'événement pour le bouton "Suivant"
 nextBtn.addEventListener('click', () => {
   currentIndex++;
   if (currentIndex >= sliderItems.length) {
@@ -56,7 +57,6 @@ nextBtn.addEventListener('click', () => {
   showSlide(currentIndex);
 });
 
-// Gestionnaire d'événement pour le bouton "Précédent"
 prevBtn.addEventListener('click', () => {
   currentIndex--;
   if (currentIndex < 0) {
@@ -65,9 +65,15 @@ prevBtn.addEventListener('click', () => {
   showSlide(currentIndex);
 });
 
-// Affiche la première diapositive au chargement de la page
 showSlide(currentIndex);
 
-//map de leafletjs.com
+//map leafletjs.com
 
- 
+var mymap = L.map('map').setView([45.4000, -71.9000], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+}).addTo(mymap);
+
+L.marker([45.4000, -71.9000]).addTo(mymap)
+    .bindPopup('Sherbrooke, Québec, Canada').openPopup();
